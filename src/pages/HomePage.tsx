@@ -1,11 +1,6 @@
 import { useRef } from "react";
-import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from "framer-motion";
-import { ArrowRight, Check, MapPin, Phone } from "lucide-react";
+import { useReducedMotion } from "framer-motion";
+import { ArrowRight, MapPin, Phone, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/Button";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
@@ -16,7 +11,6 @@ import { OfficesApproach } from "@/components/sections/OfficesApproach";
 import { UsedProductsShowcase } from "@/components/sections/UsedProductsShowcase";
 import { BrandLogos } from "@/components/sections/BrandLogos";
 import { ServiceGrid } from "@/components/sections/ServiceGrid";
-import { RevealImage } from "@/components/ui/RevealImage";
 import { Seo } from "@/components/ui/Seo";
 import { SITE } from "@/constants/site";
 import { industries, services } from "@/data/content";
@@ -34,11 +28,6 @@ const electricalSlugs = [
 export default function HomePage() {
   const heroRef = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-  const imageY = useTransform(scrollYProgress, [0, 1], [0, 18]);
   const serviceList = services.filter((service) =>
     electricalSlugs.includes(service.slug),
   );
@@ -67,93 +56,68 @@ export default function HomePage() {
         schema={localBusiness}
       />
 
-      <section
-        ref={heroRef}
-        className="technical-grid relative overflow-hidden bg-brand-navy pb-14 pt-32 text-white md:pb-16 md:pt-36"
-      >
-        <div className="container-shell relative z-10 grid items-center gap-12 lg:grid-cols-[1.04fr_.96fr] lg:gap-14">
-          <div className="max-w-2xl">
-            <p className="eyebrow eyebrow-light">
-              Electrical services · Lahore
-            </p>
-            <h1 className="display mt-5 text-white">
-              Electrical work, clearly scoped for your site.
-            </h1>
-            <p className="body-large mt-6 max-w-xl text-white/75">
-              From fan and motor repair to wiring, installation and maintenance
-              for homes, workplaces and facilities.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button href="/request-a-quote" icon={false}>
-                Get a Quote
-                <ArrowRight aria-hidden="true" size={17} />
-              </Button>
-              <Button
-                href={SITE.phoneHref}
-                variant="ghost"
-                icon={false}
-                className="border-white/35 px-5 text-white hover:border-white hover:bg-white/10"
-              >
-                <Phone aria-hidden="true" size={16} />
-                Call Now
-              </Button>
-            </div>
-            <p className="mt-4 text-sm leading-6 text-white/60">
-              Work scope, timing and pricing are confirmed after your enquiry.
-            </p>
-          </div>
+<section
+  ref={heroRef}
+  className="technical-grid bg-red relative overflow-hidden bg-brand-navy   h-[90vh] text-white  mt-20 d-flex justify-center align-center"
+>
+  {/* ---------- Full-width background image (all screens) ---------- */}
+  <div className="pointer-events-none 
+   inset-0 -z-10">
+    <img
+      src="/images/hero-bg.png"
+      alt="A-One Maintenance Service electricians team with company van"
+      className="absolute inset-0 w-full h-full object-cover object-center"
+      loading="eager"
+      decoding="async"
+      aria-hidden="true"
+    />
+    <div className="absolute inset-0 bg-gradient-to-r from-brand-navy via-brand-navy/90 to-transparent" />
+    <div className="absolute inset-x-0 bottom-0 h-[240px] bg-gradient-to-t from-brand-navy to-transparent" />
+    {/* <div className="absolute right-[10%] top-1/3 -translate-y-1/2 h-[560px] w-[560px] rounded-full bg-sky-500/20 blur-[100px]" /> */}
+  </div>
 
-          <div className="image-frame relative mx-2 mb-2 mt-2 lg:ml-0">
-            <motion.div
-              className="relative z-10"
-              style={reduceMotion ? undefined : { y: imageY }}
-            >
-              <RevealImage
-                src="/images/hvac-project-works.jpg"
-                alt="Commercial rooftop cooling equipment and connected service piping"
-                className="aspect-[4/3] rounded-xl bg-white/10 shadow-[0_24px_60px_rgba(0,0,0,0.22)]"
-                imageClassName="object-center"
-                loading="eager"
-              />
-            </motion.div>
-            <div className="absolute left-4 top-4 z-20 max-w-[calc(100%-32px)] rounded-md border border-white/15 bg-brand-navy/90 px-4 py-3 shadow-lg backdrop-blur-sm sm:bottom-4 sm:top-auto">
-              <p className="text-xs font-bold uppercase tracking-[0.12em] text-brand-cyan">
-                Electrical & maintenance
-              </p>
-              <p className="mt-1 text-sm text-white/80">
-                Residential · Commercial · Industrial
-              </p>
-            </div>
-          </div>
-        </div>
+  {/* ---------- Content ---------- */}
+  <div className="container-shell relative z-10 h-full flex items-center">
+    <div className="max-w-2xl">
+      <h1 className=" text-4xl font-extrabold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
+        Need an Electrician?
+        <span className="block eyebrow-light">We&apos;re Here to Help.</span>
+      </h1>
 
-        <div className="container-shell relative z-10 mt-12">
-          <div className="section-rule section-rule-light mb-5" />
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              "Service coverage across Lahore",
-              "Home, business and industrial sites",
-              "Electrical and maintenance services",
-              "Quote confirmed after review",
-            ].map((item) => (
-              <div className="flex items-start gap-3" key={item}>
-                <span className="mt-0.5 grid size-6 shrink-0 place-items-center rounded-full border border-white/20 bg-white/5 text-brand-cyan">
-                  <Check aria-hidden="true" size={14} />
-                </span>
-                <p className="max-w-[24ch] text-sm leading-5 text-white/75">
-                  {item}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <p className="mt-6 max-w-xl text-lg leading-8 text-white/80">
+        From small repairs to complete installations, we keep your home and
+        business powered, safely and efficiently.
+      </p>
+
+      <div className="mt-8 flex flex-wrap gap-3">
+        <Button href="/request-a-quote" icon={false}>
+          Get a Quote
+          <ArrowRight aria-hidden="true" size={17} />
+        </Button>
+        <Button
+          href={SITE.phoneHref}
+          variant="ghost"
+          icon={false}
+          className="border-white/35 px-5 text-white hover:border-white hover:bg-white/10"
+        >
+          <Phone aria-hidden="true" size={16} />
+          Call Now
+        </Button>
+      </div>
+
+      <div className="flex eyebrow-light mt-6 items-center text-sm leading-6 text-white/60 gap-1">
+         <Star size={16} fill="#05a9e8"/> 4.9 
+         <p className="text-white/60">, 1417 Google reviews</p> 
+      </div>
+    </div>
+  </div>
+</section>
 
       <AnimatedSection className="section-pad bg-white">
         <div className="container-shell">
           <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
             <div className="max-w-3xl">
-              <p className="eyebrow">Electrical services</p>
+              <p className="eyebrow">What We Do</p>
               <h2 className="headline mt-3 text-brand-navy">
                 Repair, installation and maintenance.
               </h2>

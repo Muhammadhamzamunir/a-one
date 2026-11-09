@@ -1,6 +1,6 @@
 import { useMemo, useState, useCallback } from "react";
 import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, Camera, PhoneCall, BadgeCheck, Handshake, Phone, Search, Tag } from "lucide-react";
+import { ArrowRight, Camera, PhoneCall, BadgeCheck, Handshake, Phone, Search, Tag, X } from "lucide-react";
 import { useSearchParams } from "react-router-dom";
 import { Seo } from "@/components/ui/Seo";
 import { ProductArt } from "@/components/market/ProductArt";
@@ -15,6 +15,7 @@ import { SITE } from "@/constants/site";
 import { cn } from "@/lib/utils";
 import type { ProductCategory } from "@/types";
 import { SellForm } from "@/components/market/SellForm";
+import { ProductModal } from "@/components/market/ProductModal";
 
 const sellSteps = [
   { title: "Send details", body: "Share the product, brand, model, age and your area." },
@@ -179,69 +180,6 @@ export default function EquipmentPage() {
         </div>
       </section>
 
-      {/* <section className="bg-[#f4f7fb] py-14 md:py-20">
-        <div className="container-shell">
-          <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
-            <LayoutGroup>
-              <div role="tablist" aria-label="Product categories" className="flex flex-wrap gap-2">
-                {productCategories.map((c) => (
-                  <button
-                    key={c}
-                    role="tab"
-                    aria-selected={category === c}
-                    onClick={() => pick(c)}
-                    className={cn(
-                      "focus-ring relative min-h-11 rounded-full px-5 text-sm font-bold transition-colors",
-                      category === c ? "text-white" : "bg-white text-brand-navy ring-1 ring-slate-200 hover:ring-brand-blue/40",
-                    )}
-                  >
-                    {category === c && (
-                      <motion.span
-                        layoutId="cat-pill"
-                        className="absolute inset-0 rounded-full bg-brand-navy"
-                        transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                      />
-                    )}
-                    <span className="relative">{c}</span>
-                  </button>
-                ))}
-              </div>
-            </LayoutGroup>
-
-            <label className="relative block w-full lg:w-72">
-              <span className="sr-only">Search products</span>
-              <Search aria-hidden="true" size={17} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
-              <input
-                type="search"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search AC, fridge, TV…"
-                className="focus-ring h-11 w-full rounded-full border border-slate-200 bg-white pl-11 pr-4 text-sm"
-              />
-            </label>
-          </div>
-
-          <p className="mt-6 text-sm font-semibold text-slate-500" aria-live="polite">
-            {visible.length} {visible.length === 1 ? "product" : "products"} · Price on call
-          </p>
-
-          <motion.div layout={!reduceMotion} className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            <AnimatePresence mode="popLayout">
-              {visible.map((p, i) => (
-                <ProductCard key={p.id} product={p} index={i} />
-              ))}
-            </AnimatePresence>
-          </motion.div>
-
-          {visible.length === 0 && (
-            <div className="mt-6 rounded-2xl border border-dashed border-slate-300 bg-white p-10 text-center">
-              <p className="font-bold text-brand-navy">Nothing listed for that search.</p>
-              <p className="mt-1 text-sm text-slate-600">Call or message the team. Stock changes often and not every item is listed.</p>
-            </div>
-          )}
-        </div>
-      </section> */}
-
       {/* LISTINGS */}
       <section id="listings" className="section-pad scroll-mt-20 bg-white">
         <div className="container-shell">
@@ -378,6 +316,8 @@ export default function EquipmentPage() {
         </div>
       </section>
       <CTASection />
+
+      <ProductModal listing={open} onClose={closeModal} />
     </>
   );
 }

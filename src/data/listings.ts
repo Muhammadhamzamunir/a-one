@@ -84,7 +84,7 @@ export const LISTINGS: Listing[] = [
     specs: ["1.5 Ton", "Split", "Wall mounted"],
     description: "Wall-mounted split unit. Cooling performance and remote checked before sale; installation can be arranged.",
     featured: true,
-    price: "Price on call",
+    price: "Rs 500",
   },
   {
     id: "fridge-double",
@@ -95,7 +95,7 @@ export const LISTINGS: Listing[] = [
     specs: ["Double door", "Frost control", "Family size"],
     description: "Household refrigerator in working order. Ask the team for current capacity, age and delivery options.",
     featured: true,
-    price: "Price on call",
+    price: "",
   },
   {
     id: "tv-led-43",

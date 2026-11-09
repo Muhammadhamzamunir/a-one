@@ -109,7 +109,7 @@ img {
 
 .display {
   max-width: 13ch;
-  font-size: clamp(2.75rem, 4.5vw, 4.25rem);
+  font-size: clamp(2.75rem, 4.5vw, 4.05rem);
   font-weight: 750;
   letter-spacing: -0.052em;
   line-height: 1.04;

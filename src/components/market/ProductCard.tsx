@@ -54,12 +54,12 @@ export function ProductCard({
       exit={reduceMotion ? undefined : { opacity: 0, scale: 0.95 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.55, delay: Math.min(index, 5) * 0.06, ease: [0.22, 1, 0.36, 1] }}
-      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_1px_0_rgba(13,27,42,0.03)] transition-[box-shadow,border-color,transform] duration-300 hover:-translate-y-1.5 hover:border-brand-blue/30 hover:shadow-[0_22px_44px_rgba(13,27,42,0.13)]"
+      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 cursor-pointer bg-white shadow-[0_1px_0_rgba(13,27,42,0.03)] transition-[box-shadow,border-color,transform] duration-300 hover:-translate-y-1.5 hover:border-brand-blue/30 hover:shadow-[0_22px_44px_rgba(13,27,42,0.13)]"
     >
       <button
         type="button"
         onClick={() => onOpen?.(listing)}
-        className="focus-ring relative block aspect-[4/3] w-full overflow-hidden bg-gradient-to-br from-slate-50 via-[#eef4fb] to-[#dfeaf6] text-left"
+        className="focus-ring relative block cursor-pointer aspect-[4/3] w-full overflow-hidden bg-gradient-to-br from-slate-50 via-[#eef4fb] to-[#dfeaf6] text-left"
         aria-label={`View details for ${listing.title}`}
       >
         <span
@@ -83,13 +83,13 @@ export function ProductCard({
       </button>
 
       <div className="flex flex-1 flex-col p-5">
-        <p className="inline-flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-[0.12em] text-brand-blue">
-          <CategoryIcon aria-hidden="true" size={13} />
+        <p className="inline-flex items-center gap-1.5 text-[9px] font-extrabold uppercase tracking-[0.12em] text-brand-blue">
+          <CategoryIcon aria-hidden="true" size={11} />
           {category.short}
         </p>
-        <h3 className="mt-2 text-lg font-bold leading-snug text-brand-navy">{listing.title}</h3>
+        <h3 className="mt-2 text-md font-bold leading-snug text-brand-navy">{listing.title}</h3>
 
-        <ul className="mt-3 flex flex-wrap gap-1.5">
+        {/* <ul className="mt-3 flex flex-wrap gap-1.5">
           {listing.specs.map((spec) => (
             <li
               key={spec}
@@ -98,19 +98,16 @@ export function ProductCard({
               {spec}
             </li>
           ))}
-        </ul>
+        </ul> */}
 
-        <p className="mt-3 inline-flex items-center gap-1.5 text-xs text-slate-500">
-          <MapPin aria-hidden="true" size={13} className="text-brand-red" /> Lahore · inspect before you buy
-        </p>
 
-        <div className="mt-auto pt-5">
-          <div className="flex items-end justify-between border-t border-dashed border-slate-200 pt-4">
+        <div className="mt-auto">
+          {/* <div className="flex items-end justify-between border-t border-dashed border-slate-200 pt-4">
             <div>
               <p className="text-[11px] font-bold uppercase tracking-[0.1em] text-slate-400">Price</p>
               <p className="text-lg font-extrabold text-brand-navy">{listing.price}</p>
             </div>
-          </div>
+          </div> */}
           <div className="mt-3 grid grid-cols-[1fr_auto] gap-2">
             <a
               href={SITE.phoneHref}

@@ -5,12 +5,15 @@ import { Button } from "@/components/ui/Button";
 import { ProductCard } from "@/components/market/ProductCard";
 import { CATEGORIES, LISTINGS } from "@/data/listings";
 import { SITE } from "@/constants/site";
+import { ProductModal } from "@/components/market/ProductModal";
+import { useState, useCallback  } from "react";
 
 /** Home-page teaser for the Buy & Sell marketplace. */
 export function UsedProductsShowcase() {
   const reduceMotion = useReducedMotion();
   const featured = LISTINGS.filter((listing: any) => listing.featured).slice(0, 4);
-
+  const [open, setOpen] = useState<Listing | null>(null);
+  const closeModal = useCallback(() => setOpen(null), []);
   return (
     <section className="section-pad relative overflow-hidden bg-white">
       <div
@@ -59,7 +62,7 @@ export function UsedProductsShowcase() {
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {featured.map((listing: any, index : any) => (
-            <ProductCard key={listing.id} listing={listing} index={index} />
+            <ProductCard key={listing.id} listing={listing} index={index} onOpen={setOpen}/>
           ))}
         </div>
 
@@ -92,6 +95,8 @@ export function UsedProductsShowcase() {
           </div>
         </motion.div>
       </div>
+        <ProductModal listing={open} onClose={closeModal} />
     </section>
+
   );
 }
