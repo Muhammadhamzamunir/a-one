@@ -96,13 +96,13 @@ export default function HomePage() {
       decoding="async"
       aria-hidden="true"
     />
-    <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/80 to-transparent" />
+    <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/90 to-transparent" />
     <div className="absolute right-[10%] top-1/3 -translate-y-1/2 h-[300px] w-[400px] rounded-full bg-sky-500/20 blur-[100px]" />
   </div>
 
   {/* ---------- Content ---------- */}
   <div className="container-shell relative z-10  lg:min-h-[90vh]  flex flex-col items-center justify-center lg:items-start text-center lg:text-left">
-    <div className="max-w-2xl">
+    <div className="max-w-2xl mt-20 lg:mt-0">
       <h1 className="text-3xl font-extrabold leading-[1.1] tracking-tight sm:text-4xl lg:text-5xl">
         Need an Electrician?
         <span className="block eyebrow-light mt-2 lg:mt-0">We&apos;re Here to Help.</span>
