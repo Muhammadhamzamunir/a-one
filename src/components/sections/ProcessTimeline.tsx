@@ -24,23 +24,23 @@ type Step = { title: string; body: string; icon: LucideIcon };
 
 const STEPS: Step[] = [
   {
-    title: "Tell us what needs attention",
-    body: "Share the equipment, issue, site type and location.",
+    title: "Call us",
+    body: "Tell us what electrical work you need. We answer your questions on the call.",
     icon: MessageCircle,
   },
   {
-    title: "The team reviews the request",
-    body: "They confirm the next step and whether a site visit is needed.",
+    title: "Our team visits you",
+    body: "Within a few hours, our technician comes to your home to check the problem.",
     icon: ClipboardCheck,
   },
   {
-    title: "Agree the work and quotation",
-    body: "The work scope, assumptions and commercial terms are confirmed.",
+    title: "Get your price",
+    body: "We give you a clear quotation or budget after checking. No hidden charges.",
     icon: FileCheck2,
   },
   {
-    title: "Schedule approved work",
-    body: "Once the scope is agreed, timing and follow-up are arranged.",
+    title: "Work starts after your approval",
+    body: "If you are happy with the price, we start the work.",
     icon: CalendarDays,
   },
 ];
@@ -100,42 +100,23 @@ export function ProcessTimeline() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
             <p className="eyebrow eyebrow-light inline-flex items-center gap-2">
-              <span className="h-px w-8 bg-brand-cyan" /> What to expect
+               HOW IT WORKS
             </p>
             <h2
               id="process-title"
               className="headline mt-4 text-white md:text-[2.9rem]"
             >
-              A clear path from{" "}
+              From your call to finished work{" "}
               <span className="bg-gradient-to-r from-white via-white to-brand-cyan bg-clip-text text-transparent">
-                enquiry to service.
+                in 4 {" "}
+              </span>
+              <span className="bg-gradient-to-r from-white via-white to-brand-cyan bg-clip-text text-transparent">
+               simple steps.
               </span>
             </h2>
             <p className="body-large mt-5 max-w-xl text-white/70">
-              Share a few details first. The team reviews the requirement before
-              confirming scope, timing or price.
+              Call us and tell us your problem. Our team visits your home, gives you a clear price, and starts work only after you say yes.
             </p>
-          </motion.div>
-
-          <motion.div
-            className="flex flex-wrap items-center gap-4"
-            initial={reduceMotion ? false : { opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.7, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <Button href="/request-a-quote" variant="light" icon={false}>
-              Start a quote
-              <ArrowRight aria-hidden="true" size={17} />
-            </Button>
-            <span className="inline-flex items-center gap-2 text-sm text-white/60">
-              <ShieldCheck
-                aria-hidden="true"
-                size={17}
-                className="text-brand-cyan"
-              />
-              Scope and price are confirmed after review
-            </span>
           </motion.div>
         </div>
 
@@ -241,7 +222,7 @@ function TimelineItem({
           reduceMotion
             ? false
             : {
-                scale: 0.4,
+                scale: 0.95,
                 opacity: 0,
                 backgroundColor: "#0d1b2a",
                 borderColor: "rgba(255,255,255,0.18)",

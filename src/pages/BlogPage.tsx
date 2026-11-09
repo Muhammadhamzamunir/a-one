@@ -49,8 +49,8 @@ export default function BlogPage() {
               ))}
             </div>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button href="/request-a-quote" icon={false}>
-                Get a Quote
+              <Button href="/request-service" icon={false} className="bg-brand-red text-white border-brand-red hover:bg-[#a3141a] hover:border-[#a3141a]">
+                Request Service
               </Button>
               <Button href={SITE.phoneHref} variant="ghost" icon={false}>
                 Call Now

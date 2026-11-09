@@ -20,8 +20,8 @@ export function CTASection() {
           </p>
         </div>
         <div className="flex flex-wrap gap-3">
-          <Button href="/request-a-quote" variant="primary" icon={false}>
-            Get a Quote
+          <Button href="/request-service" variant="primary" icon={false} className="bg-brand-red text-white border-brand-red hover:bg-[#a3141a] hover:border-[#a3141a]">
+            Request Service
           </Button>
           <Button href={SITE.phoneHref} variant="light" icon={false}>
             <Phone aria-hidden="true" size={16} />

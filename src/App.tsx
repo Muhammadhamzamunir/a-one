@@ -13,6 +13,8 @@ const BlogPage=lazy(()=>import('@/pages/BlogPage'))
 const BlogDetailPage=lazy(()=>import('@/pages/BlogDetailPage'))
 const ContactPage=lazy(()=>import('@/pages/ContactPage'))
 const QuotePage=lazy(()=>import('@/pages/QuotePage'))
+const ReviewsPage=lazy(()=>import('@/pages/ReviewsPage'))
+const ServiceAreasPage=lazy(()=>import('@/pages/ServiceAreasPage'))
 const LegalPage=lazy(()=>import('@/pages/LegalPage'))
 const NotFoundPage=lazy(()=>import('@/pages/NotFoundPage'))
 
@@ -34,7 +36,10 @@ export default function App(){
       <Route path="blogs/:slug" element={<BlogDetailPage/>}/>
       <Route path="blog/:slug" element={<LegacyBlogRedirect/>}/>
       <Route path="contact" element={<ContactPage/>}/>
-      <Route path="request-a-quote" element={<QuotePage/>}/>
+      <Route path="request-a-quote" element={<Navigate replace to="/request-service"/>}/>
+      <Route path="request-service" element={<QuotePage/>}/>
+      <Route path="reviews" element={<ReviewsPage/>}/>
+      <Route path="service-areas" element={<ServiceAreasPage/>}/>
       <Route path="privacy-policy" element={<LegalPage type="privacy"/>}/>
       <Route path="terms" element={<LegalPage type="terms"/>}/>
       <Route path="*" element={<NotFoundPage/>}/>

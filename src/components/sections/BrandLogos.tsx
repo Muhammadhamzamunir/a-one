@@ -23,10 +23,9 @@ export function BrandLogos() {
         <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <div className="max-w-2xl">
             <p className="eyebrow">Equipment brands</p>
-            <h2 className="headline mt-3 text-brand-navy">Service for familiar equipment brands.</h2>
+            <h2 className="headline mt-3 text-brand-navy">Brands We Work With.</h2>
             <p className="mt-4 max-w-xl text-base leading-7 text-slate-600">
-              Selected brands include Haier, Dawlance, TCL, Hitachi, Midea and EcoStar. Share your model so the team can
-              confirm what support is available.
+              We provide repair, installation, and maintenance services for equipment from a wide range of trusted brands.
             </p>
           </div>
           <Link

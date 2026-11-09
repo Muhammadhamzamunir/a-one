@@ -76,7 +76,7 @@ export function ServiceGrid({
         <>
           <motion.div className="h-full" variants={cardMotion}>
             <Link
-              to="/request-a-quote"
+              to="/request-service"
               className="focus-ring group flex h-full min-h-[268px] flex-col bg-brand-navy p-6 text-white transition-colors duration-300 hover:bg-[#142b41] sm:p-7"
             >
               <div className="flex items-start justify-between">

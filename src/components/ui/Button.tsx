@@ -30,7 +30,7 @@ export function Button({
   ...props
 }: Props) {
   const classes = cn(
-    "focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-md border px-5 py-3 text-sm font-bold transition duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.99]",
+    "focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-md border px-5 py-3 text-sm font-bold transition-transform transition-opacity duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97]",
     styles[variant],
     className,
   );

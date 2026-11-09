@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Camera, CheckCircle2, Loader2, MessageCircle, Trash2 } from "lucide-react";
-import { useSubmitContactMutation } from "@/features/api/apiSlice";
+import { sendMarketplaceEmail } from "@/lib/email";
 import { SITE } from "@/constants/site";
 import { CATEGORIES, type CategoryId, type Condition } from "@/data/listings";
 
@@ -15,9 +15,11 @@ type Errors = Partial<Record<"name" | "phone" | "item" | "details", string>>;
 
 /** "Sell your item" form. Photos are previewed locally; connect the Spring API to upload them. */
 export function SellForm() {
-  const [submit, state] = useSubmitContactMutation();
   const [files, setFiles] = useState<File[]>([]);
   const [errors, setErrors] = useState<Errors>({});
+  const [isSending, setIsSending] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const previews = useMemo(() => files.map((file) => URL.createObjectURL(file)), [files]);
   useEffect(() => () => previews.forEach((url) => URL.revokeObjectURL(url)), [previews]);
@@ -35,25 +37,37 @@ export function SellForm() {
     setErrors(next);
     if (Object.keys(next).length) return;
 
+    setSubmitError(null);
+    setIsSending(true);
     const category = CATEGORIES.find((c) => c.id === (get("category") as CategoryId))?.label ?? "Other";
-    await submit({
-      name: get("name"),
-      phone: get("phone"),
-      email: "",
-      service: `Sell item: ${category}`,
-      propertyType: get("area"),
-      message: [
-        `Item: ${get("item")}`,
-        `Category: ${category}`,
-        `Condition: ${get("condition")}`,
-        `Area: ${get("area") || "Not given"}`,
-        `Photos selected: ${files.length}`,
-        `Details: ${get("details")}`,
-      ].join("\n"),
-    }).unwrap();
+    try {
+      await sendMarketplaceEmail({
+        from_name: get("name"),
+        phone: get("phone"),
+        category,
+        condition: get("condition"),
+        item: get("item"),
+        area: get("area") || "Not specified",
+        details: [
+          `Item: ${get("item")}`,
+          `Category: ${category}`,
+          `Condition: ${get("condition")}`,
+          `Area: ${get("area") || "Not given"}`,
+          `Photos selected: ${files.length}`,
+          `Details: ${get("details")}`,
+        ].join("\n"),
+      });
+      setIsSending(false);
+      setIsSuccess(true);
+    } catch (err) {
+      setIsSending(false);
+      setSubmitError(
+        err instanceof Error ? err.message : "Failed to send enquiry. Please retry.",
+      );
+    }
   };
 
-  if (state.isSuccess) {
+  if (isSuccess) {
     return (
       <motion.div
         role="status"
@@ -195,12 +209,17 @@ export function SellForm() {
 
       <button
         type="submit"
-        disabled={state.isLoading}
+        disabled={isSending}
         className="focus-ring inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-brand-red px-6 text-sm font-bold text-white transition hover:bg-[#b9141a] disabled:opacity-70 sm:w-auto"
       >
-        {state.isLoading ? <Loader2 className="animate-spin" size={18} /> : null}
-        {state.isLoading ? "Sending…" : "Submit for review"}
+        {isSending ? <Loader2 className="animate-spin" size={18} /> : null}
+        {isSending ? "Sending…" : "Submit for review"}
       </button>
+      {submitError && (
+        <p role="alert" className="mt-2 rounded bg-red-50 p-3 text-sm font-bold text-red-700">
+          {submitError}
+        </p>
+      )}
       <p className="text-xs leading-5 text-slate-500">
         We call you back with an offer. Nothing is listed publicly until you agree.
       </p>

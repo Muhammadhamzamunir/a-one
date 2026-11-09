@@ -13,7 +13,7 @@ export default function ProjectsPage(){
           <Breadcrumbs items={[{label:'Projects'}]}/>
           <h1 className="headline mt-4 max-w-4xl">Case studies should show the work—not make unsupported claims.</h1>
           <p className="body-large mt-6 max-w-2xl text-white/70">The project entries below are mock content demonstrating the approved format for future verified work.</p>
-          <div className="mt-9 flex flex-wrap gap-3"><Button href="/contact">Discuss a project</Button><Button href="/request-a-quote" variant="ghost">Request a quote</Button></div>
+          <div className="mt-9 flex flex-wrap gap-3"><Button href="/contact">Discuss a project</Button><Button href="/request-service" variant="ghost" className="border-brand-red text-brand-red hover:bg-brand-red hover:text-white">Request Service</Button></div>
         </div>
         <div className="rounded-lg border border-white/10 bg-white/5 p-7 md:p-8">
           <p className="text-xl font-extrabold text-brand-cyan">Mock case studies</p>

@@ -51,7 +51,7 @@ export function UsedProductsShowcase() {
             <li key={id}>
               <Link
                 to={`/buy-&-sale?category=${id}#listings`}
-                className="focus-ring inline-flex min-h-10 items-center gap-2 rounded-full border border-slate-200 bg-white px-4 text-[13px] font-bold text-brand-navy transition-all hover:-translate-y-0.5 hover:border-brand-blue/40 hover:bg-blue-50 hover:text-brand-blue"
+                className="focus-ring inline-flex min-h-10 items-center gap-2 rounded-full border border-slate-200 bg-white px-4 text-[13px] font-bold text-brand-navy transition-transform transition-colors duration-200 ease-out hover:-translate-y-0.5 hover:border-brand-blue/40 hover:bg-blue-50 hover:text-brand-blue"
               >
                 <Icon aria-hidden="true" size={15} />
                 {label}

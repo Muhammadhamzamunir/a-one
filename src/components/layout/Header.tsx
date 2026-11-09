@@ -103,8 +103,8 @@ export function Header() {
             <Phone aria-hidden="true" size={16} />
             Call Now
           </Button>
-          <Button href="/request-a-quote" icon={false}>
-            Get a Quote
+          <Button href="/request-service" icon={false}>
+            Request Service
           </Button>
         </div>
 
@@ -161,8 +161,8 @@ export function Header() {
                   <Phone aria-hidden="true" size={16} />
                   Call Now
                 </Button>
-                <Button href="/request-a-quote" icon={false}>
-                  Get a Quote
+                <Button href="/request-service" icon={false} className="bg-brand-red text-white border-brand-red hover:bg-[#a3141a] hover:border-[#a3141a]">
+                  Request Service
                 </Button>
               </div>
             </nav>

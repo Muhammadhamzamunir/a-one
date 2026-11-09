@@ -1,12 +1,10 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 import { z } from "zod";
 import { CheckCircle2, Loader2 } from "lucide-react";
 import { services } from "@/data/content";
-import {
-  useSubmitContactMutation,
-  useSubmitQuoteMutation,
-} from "@/features/api/apiSlice";
+import { sendEnquiryEmail } from "@/lib/email";
 
 const schema = z.object({
   name: z.string().min(2, "Please enter your name"),
@@ -27,9 +25,9 @@ export function EnquiryForm({
   mode?: "quote" | "contact" | "equipment";
   defaultService?: string;
 }) {
-  const [submitQuote, quoteState] = useSubmitQuoteMutation();
-  const [submitContact, contactState] = useSubmitContactMutation();
-  const state = mode === "quote" ? quoteState : contactState;
+  const [isSending, setIsSending] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
@@ -40,13 +38,23 @@ export function EnquiryForm({
     defaultValues: { service: defaultService, email: "", message: "" },
   });
   const submit = async (values: Values) => {
-    const action = mode === "quote" ? submitQuote : submitContact;
-    await action(values).unwrap();
-    reset();
+    setSubmitError(null);
+    setIsSending(true);
+    try {
+      await sendEnquiryEmail(values);
+      reset();
+      setIsSending(false);
+      setIsSuccess(true);
+    } catch (err) {
+      setIsSending(false);
+      setSubmitError(
+        err instanceof Error ? err.message : "Failed to send enquiry. Please retry.",
+      );
+    }
   };
   const input =
     "focus-ring mt-2 min-h-12 w-full rounded-md border border-slate-300 bg-white px-4 text-brand-navy placeholder:text-slate-400";
-  if (state.isSuccess)
+  if (isSuccess)
     return (
       <div
         role="status"
@@ -54,15 +62,18 @@ export function EnquiryForm({
       >
         <CheckCircle2 className="mx-auto text-green-600" size={38} />
         <h3 className="mt-4 text-xl font-extrabold text-brand-navy">
-          Demo enquiry captured
+           Enquiry Submitted 
         </h3>
-        <p className="mt-2 text-sm leading-6 text-slate-600">
+        {/* <p className="mt-2 text-sm leading-6 text-slate-600">
           This frontend is API-ready. Connect the RTK Query endpoint to Spring
           Boot before launch.
-        </p>
+        </p> */}
         <button
           className="focus-ring mt-5 font-bold text-brand-red"
-          onClick={() => state.reset()}
+          onClick={() => {
+            reset();
+            setIsSuccess(false);
+          }}
         >
           Send another
         </button>
@@ -136,19 +147,16 @@ export function EnquiryForm({
           {...register("message")}
         />
       </Field>
-      {state.isError && (
-        <p
-          role="alert"
-          className="rounded bg-red-50 p-3 text-sm font-bold text-red-700"
-        >
-          The demo request could not be submitted. Please retry.
+      {submitError && (
+        <p role="alert" className="rounded bg-red-50 p-3 text-sm font-bold text-red-700">
+          {submitError}
         </p>
       )}
       <button
-        disabled={state.isLoading}
+        disabled={isSending}
         className="focus-ring inline-flex min-h-13 items-center justify-center gap-2 rounded-md bg-brand-blue px-6 py-3 font-extrabold text-white transition-colors hover:bg-[#103b7c] disabled:opacity-60"
       >
-        {state.isLoading ? (
+        {isSending ? (
           <>
             <Loader2 className="animate-spin" size={18} />
             Submitting…
@@ -157,10 +165,6 @@ export function EnquiryForm({
           "Submit enquiry"
         )}
       </button>
-      <p className="text-xs leading-5 text-slate-500">
-        Demo form: no message is delivered until the Spring Boot API and privacy
-        workflow are connected.
-      </p>
     </form>
   );
 }

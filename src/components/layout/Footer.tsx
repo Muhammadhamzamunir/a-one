@@ -1,6 +1,6 @@
 ﻿import { Link } from "react-router-dom";
-import { Mail, MapPin, Phone } from "lucide-react";
-import { SITE } from "@/constants/site";
+import { Mail, MapPin, Phone, ShieldCheck, Star, Wrench } from "lucide-react";
+import { SITE, TRUST_ITEMS, PRICING_TRANSPARENCY } from "@/constants/site";
 export function Footer() {
   return (
     <footer className="bg-[#08131f] text-white">
@@ -15,6 +15,28 @@ export function Footer() {
             HVAC, electrical, appliance and maintenance services for homes,
             workplaces and facilities across Lahore.
           </p>
+          <div className="mt-8 grid gap-3">
+            {TRUST_ITEMS.map((item) => {
+              const Icon =
+                item.icon === "ShieldCheck" ? ShieldCheck :
+                item.icon === "Star" ? Star :
+                item.icon === "Building2" ? MapPin :
+                Wrench;
+              return (
+                <div key={item.label} className="flex items-start gap-3 text-sm text-white/70">
+                  <Icon aria-hidden="true" className="mt-0.5 shrink-0 text-brand-cyan" size={16} />
+                  <div>
+                    <span className="block text-xs font-bold uppercase tracking-[0.1em] text-white/50">
+                      {item.label}
+                    </span>
+                    <span className="mt-0.5 block text-sm font-bold text-white">
+                      {item.value}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
         <div>
           <h2 className="text-sm font-extrabold text-white/70">Explore</h2>

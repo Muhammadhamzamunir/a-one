@@ -10,14 +10,10 @@ export default function QuotePage(){
     <section className="bg-surface pb-16 pt-32">
       <div className="container-shell grid items-center gap-14 lg:grid-cols-[1fr_.9fr]">
         <div>
-          <Breadcrumbs items={[{label:'Request a Quote'}]}/>
+          <Breadcrumbs items={[{label:'Request a Service'}]}/>
           <h1 className="headline mt-4 max-w-4xl">Start with the requirement. We’ll shape the next step.</h1>
           <p className="body-large mt-6 max-w-2xl text-slate-600">Provide the system, issue, site type and preferred visit window. Final scope, availability and pricing are confirmed directly.</p>
-          <div className="mt-9 flex flex-wrap gap-3"><Button href="/contact">Start an enquiry</Button><Button href="/services" variant="secondary">Browse services</Button></div>
-        </div>
-        <div className="rounded-lg border border-slate-200 bg-white p-8 md:p-10">
-          <ol className="mt-7 space-y-6">{steps.map((s)=><li className="flex gap-4" key={s}><p className="font-bold leading-6 text-brand-navy">{s}</p></li>)}</ol>
-          <p className="mt-8 text-sm leading-6 text-slate-500">The technical team reviews the submitted requirement before any site visit or quotation is prepared.</p>
+          {/* <div className="mt-9 flex flex-wrap gap-3"><Button href="/contact">Start an enquiry</Button><Button href="/services" variant="secondary">Browse services</Button></div> */}
         </div>
       </div>
     </section>
