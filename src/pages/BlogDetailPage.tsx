@@ -3,7 +3,6 @@ import { ArrowUpRight } from "lucide-react";
 import { Seo } from "@/components/ui/Seo";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { blogPosts } from "@/data/content";
-import { MockBadge } from "@/components/ui/MockBadge";
 import { RevealImage } from "@/components/ui/RevealImage";
 import { CTASection } from "@/components/sections/CTASection";
 import NotFoundPage from "./NotFoundPage";
@@ -22,56 +21,40 @@ export default function BlogDetailPage() {
         <div className="container-shell">
           <Breadcrumbs items={[{ label: "Blogs" }, { label: post.title }]} />
           <div className="mx-auto mt-12 max-w-3xl">
-            <MockBadge>Mock draft—technical review required</MockBadge>
             <h1 className="headline mt-7 text-brand-navy">{post.title}</h1>
             <p className="body-large mt-5 text-slate-600">{post.excerpt}</p>
             <figure className="mt-8">
               <RevealImage
                 src="/images/hvac-project-works.jpg"
-                alt="Illustrative cooling equipment photo for a draft maintenance article"
+                alt="Equipment photo illustrating the maintenance article"
                 className="aspect-[16/8] rounded-[12px] bg-slate-100"
               />
               <figcaption className="mt-2 text-xs text-slate-500">
-                Illustrative equipment photo · draft article.
+                Illustrative equipment photo.
               </figcaption>
             </figure>
           </div>
 
           <div className="mx-auto mt-12 max-w-3xl">
             <div className="space-y-8 text-lg leading-8 text-slate-700">
-              <section>
-                <h2 className="text-2xl font-bold text-brand-navy">
-                  Why routine attention matters
-                </h2>
-                <p className="mt-4">
-                  This is placeholder editorial content demonstrating article
-                  typography and structure. Replace it with technically
-                  reviewed, original guidance based on A-One’s real service
-                  experience.
-                </p>
-              </section>
-              <section>
-                <h2 className="text-2xl font-bold text-brand-navy">
-                  A practical review sequence
-                </h2>
-                <ul className="mt-4 list-disc space-y-3 pl-6">
-                  <li>Confirm the equipment and operating requirement.</li>
-                  <li>
-                    Record symptoms, service history and environmental
-                    conditions.
-                  </li>
-                  <li>
-                    Use a qualified technical assessment before approving
-                    repairs or replacement.
-                  </li>
-                </ul>
-              </section>
+              {post.body.map((section, i) => (
+                <section key={i}>
+                  {section.heading && (
+                    <h2 className="text-2xl font-bold text-brand-navy mt-8 first:mt-0">
+                      {section.heading}
+                    </h2>
+                  )}
+                  {section.paragraphs.map((p, j) => (
+                    <p key={j} className="mt-4 first:mt-0 text-lg leading-7 text-slate-700">
+                      {p}
+                    </p>
+                  ))}
+                </section>
+              ))}
             </div>
 
             <section className="mt-12 rounded-[12px] border border-slate-200 bg-surface p-6 md:p-8">
-              <h2 className="text-xl font-bold text-brand-navy">
-                Related draft articles
-              </h2>
+              <h2 className="text-xl font-bold text-brand-navy">Related articles</h2>
               <div className="mt-5 grid gap-4 sm:grid-cols-2">
                 {related.map((item) => (
                   <Link
@@ -89,7 +72,7 @@ export default function BlogDetailPage() {
                       {item.excerpt}
                     </p>
                     <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-brand-blue">
-                      Read draft
+                      Read article
                       <ArrowUpRight
                         aria-hidden="true"
                         size={15}

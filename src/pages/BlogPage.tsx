@@ -6,7 +6,6 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Button } from "@/components/ui/Button";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { blogPosts } from "@/data/content";
-import { MockBadge } from "@/components/ui/MockBadge";
 import { CTASection } from "@/components/sections/CTASection";
 import { SITE } from "@/constants/site";
 
@@ -18,7 +17,7 @@ export default function BlogPage() {
     <>
       <Seo
         title="Maintenance Blog"
-        description="Practical draft blogs about HVAC, AC maintenance, AMCs and facility maintenance in Lahore, written for the people responsible for facilities."
+        description="Practical articles about HVAC, AC maintenance, AMCs and facility maintenance in Lahore, written for homeowners, facility managers and business owners."
       />
       <section className="relative overflow-hidden bg-brand-navy pb-20 pt-32 text-white technical-grid">
         <div className="container-shell relative z-10 grid items-center gap-12 lg:grid-cols-[1.05fr_.95fr] lg:gap-14">
@@ -29,16 +28,16 @@ export default function BlogPage() {
               facilities.
             </h1>
             <p className="body-large mt-6 max-w-2xl text-white/70">
-              Draft articles on HVAC, AC maintenance, AMCs and facility
-              operations. Each post is labelled as a draft until it has been
-              technically reviewed.
+              Articles on HVAC, AC maintenance, annual maintenance contracts
+              and facility operations for homes and businesses in Lahore.
             </p>
             <div className="mt-7 flex flex-wrap gap-2">
               {[
-                "Draft articles",
                 "HVAC",
                 "AC maintenance",
                 "Facility AMCs",
+                "Appliance repair",
+                "Kitchen ventilation",
               ].map((topic) => (
                 <span
                   className="rounded-md border border-white/12 bg-white/[0.04] px-3 py-1.5 text-xs font-bold text-white/75"
@@ -67,7 +66,9 @@ export default function BlogPage() {
                 <Newspaper aria-hidden="true" size={15} />
                 {featured.category}
               </span>
-              <MockBadge>{featured.readTime}</MockBadge>
+              <span className="text-xs font-bold text-brand-cyan">
+                {featured.readTime}
+              </span>
             </div>
             <h2 className="mt-6 text-2xl font-bold leading-tight text-white">
               {featured.title}
@@ -76,7 +77,7 @@ export default function BlogPage() {
               {featured.excerpt}
             </p>
             <p className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-brand-cyan">
-              Read draft
+              Read article
               <ArrowUpRight
                 aria-hidden="true"
                 size={16}
@@ -121,7 +122,6 @@ export default function BlogPage() {
                 }}
               >
                 <div className="flex items-center justify-between gap-3">
-                  <MockBadge>Draft article</MockBadge>
                   <span className="inline-flex items-center gap-2 text-xs font-bold text-slate-500">
                     <CalendarClock aria-hidden="true" size={14} />
                     {post.readTime}
@@ -142,7 +142,7 @@ export default function BlogPage() {
                     className="focus-ring inline-flex min-h-10 items-center gap-1.5 font-bold text-brand-blue transition-colors hover:text-brand-red"
                     to={`/blogs/${post.slug}`}
                   >
-                    Read draft
+                    Read article
                     <ArrowUpRight aria-hidden="true" size={15} />
                   </Link>
                 </div>
