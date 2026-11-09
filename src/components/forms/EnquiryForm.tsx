@@ -130,7 +130,7 @@ export function EnquiryForm({
           </select>
         </Field>
         <Field label="Preferred date">
-          <input className={input} type="date" {...register("preferredDate")} />
+          <input className={input + " appearance-none bg-white"} type="date" {...register("preferredDate")} />
         </Field>
         <Field label="Preferred time">
           <select className={selectClass} {...register("preferredTime")}>

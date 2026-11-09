@@ -1,0 +1,28 @@
+{
+  "redirects": [
+    { "source": "/solutions", "destination": "/industries", "permanent": true },
+    { "source": "/blog", "destination": "/blogs", "permanent": true },
+    { "source": "/resources", "destination": "/blogs", "permanent": true },
+    { "source": "/request-a-quote", "destination": "/request-service", "permanent": true },
+    { "source": "/contact-us", "destination": "/contact", "permanent": true },
+    { "source": "/quote", "destination": "/request-service", "permanent": true },
+    { "source": "/buy-sell", "destination": "/buy-&-sale", "permanent": true },
+    { "source": "/marketplace", "destination": "/buy-&-sale", "permanent": true },
+    { "source": "/service-area", "destination": "/service-areas", "permanent": true },
+    { "source": "/areas", "destination": "/service-areas", "permanent": true },
+    { "source": "/reviews-page", "destination": "/reviews", "permanent": true },
+    { "source": "/testimonials", "destination": "/reviews", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    }
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
+}
