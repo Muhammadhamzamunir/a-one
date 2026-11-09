@@ -524,6 +524,15 @@ img {
   }
 }
 
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 /* Blur utility for crossfade transitions - masks two-state overlap */
 .blur-transition {
   transition: filter 200ms ease, opacity 200ms ease;

@@ -70,7 +70,7 @@ export default function HomePage() {
 
 <section
   ref={heroRef}
-  className="technical-grid relative overflow-hidden bg-brand-navy text-white min-h-[70vh] lg:min-h-[90vh] max-h-[100vh] pt-20 pb-12 lg:pt-0 lg:pb-0 mt-20"
+  className="technical-grid relative overflow-hidden bg-brand-navy text-white min-h-[70vh] lg:min-h-[90vh] max-h-[100vh] pt-44 lg:pt-20 pb-12 lg:pt-0 lg:pb-0 mt-20"
 >
   {/* ---------- Large devices: hero image, gradient left-to-right ---------- */}
   <div className="pointer-events-none hidden lg:block inset-0 -z-10 h-full">
@@ -96,7 +96,7 @@ export default function HomePage() {
       decoding="async"
       aria-hidden="true"
     />
-    <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/90 to-transparent" />
+    <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/80 to-transparent" />
     <div className="absolute right-[10%] top-1/3 -translate-y-1/2 h-[300px] w-[400px] rounded-full bg-sky-500/20 blur-[100px]" />
   </div>
 
@@ -140,7 +140,7 @@ export default function HomePage() {
       {/* Trust stats bar - like AJ Long Electric */}
       <AnimatedSection className="py-8 bg-white border-y border-slate-200">
         <div className="container-shell">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 text-center">
+          <div className="grid gap-4 sm:grid-cols-4 grid-cols-2 lg:grid-cols-4 text-center">
             {[
               { label: "Years serving Lahore", value: SITE.yearsInBusiness },
               { label: "Google reviews", value: `${SITE.reviewCount}+` },

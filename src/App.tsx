@@ -1,4 +1,5 @@
 import { lazy, Suspense } from 'react'
+import { Loader2 } from 'lucide-react'
 import { Navigate, Route, Routes, useParams } from 'react-router-dom'
 import { Layout } from '@/components/layout/Layout'
 
@@ -19,7 +20,7 @@ const LegalPage=lazy(()=>import('@/pages/LegalPage'))
 const NotFoundPage=lazy(()=>import('@/pages/NotFoundPage'))
 
 export default function App(){
-  return <Suspense fallback={<div role="status" className="grid min-h-svh place-items-center bg-brand-navy text-sm font-bold text-white">Loading A-One…</div>}><Routes>
+  return <Suspense fallback={<div role="status" className="grid min-h-svh place-items-center bg-brand-navy text-white"><Loader2 className="mx-auto mb-2 w-8 h-8 text-brand-cyan animate-spin" /></div>}><Routes>
     <Route element={<Layout/>}>
       <Route index element={<HomePage/>}/>
       <Route path="services" element={<ServicesPage/>}/>
