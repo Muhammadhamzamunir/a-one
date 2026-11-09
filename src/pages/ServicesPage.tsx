@@ -32,7 +32,7 @@ export default function ServicesPage() {
               site.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button href="/request-service" icon={false} className="bg-brand-red text-white border-brand-red hover:bg-[#a3141a] hover:border-[#a3141a]">
+              <Button href="/request-service" icon={false}>
                 Request Service
                 <ArrowRight aria-hidden="true" size={17} />
               </Button>

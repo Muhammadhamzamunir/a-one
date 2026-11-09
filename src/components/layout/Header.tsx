@@ -170,7 +170,7 @@ export function Header() {
                   <Button
                     href="/request-service"
                     icon={false}
-                    className="bg-brand-red text-white border-brand-red py-2.5 text-sm font-bold hover:bg-[#a3141a] hover:border-[#a3141a]"
+                    className="bg-brand-blue text-white border-brand-blue py-2.5 text-sm font-bold hover:bg-[#103b7c] hover:border-[#103b7c]"
                   >
                     Request Service
                   </Button>

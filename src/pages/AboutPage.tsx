@@ -134,7 +134,7 @@ export default function AboutPage() {
                 Lahore. The team reviews each requirement before confirming the next step.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
-                <Button href="/request-service" icon={false} className="bg-brand-red text-white border-brand-red hover:bg-[#a3141a] hover:border-[#a3141a]">Request Service</Button>
+                <Button href="/request-service" icon={false} className="bg-brand-blue text-white border-brand-blue hover:bg-[#103b7c] hover:border-[#103b7c]">Request Service</Button>
                 <Button href={SITE.phoneHref} variant="ghost" icon={false}>Call Now</Button>
               </div>
             </div>

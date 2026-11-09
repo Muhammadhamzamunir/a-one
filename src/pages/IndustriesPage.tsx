@@ -13,7 +13,7 @@ export default function IndustriesPage(){
           <Breadcrumbs items={[{label:'Industries'}]}/>
           <h1 className="headline mt-4 max-w-4xl">Technical support designed around the operating environment.</h1>
           <p className="body-large mt-6 max-w-2xl text-white/70">Different facilities bring different access, continuity, equipment and planning requirements. The service scope is confirmed per site.</p>
-          <div className="mt-9 flex flex-wrap gap-3"><Button href="/request-service" icon={false} className="bg-brand-red text-white border-brand-red hover:bg-[#a3141a] hover:border-[#a3141a]">Request Service</Button><Button href={SITE.phoneHref} variant="ghost">Call Now</Button></div>
+          <div className="mt-9 flex flex-wrap gap-3"><Button href="/request-service" icon={false} className="bg-brand-blue text-white border-brand-blue hover:bg-[#103b7c] hover:border-[#103b7c]">Request Service</Button><Button href={SITE.phoneHref} variant="ghost">Call Now</Button></div>
         </div>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
           {industries.map(({title,description,icon:Icon})=>(

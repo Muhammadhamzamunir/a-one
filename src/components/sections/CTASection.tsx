@@ -19,10 +19,10 @@ export function CTASection() {
             Share the service, equipment and site location. The team can confirm the right next step.
           </p>
         </div>
-        <div className="flex flex-wrap gap-3">
-          <Button href="/request-service" variant="primary" icon={false} className="bg-brand-red text-white border-brand-red hover:bg-[#a3141a] hover:border-[#a3141a]">
+        <div className="flex flex-wrap gap-2">
+          {/* <Button href="/request-service" variant="primary" icon={false} className="bg-brand-blue text-white border-brand-blue hover:bg-[#103b7c] hover:border-[#103b7c]">
             Request Service
-          </Button>
+          </Button> */}
           <Button href={SITE.phoneHref} variant="light" icon={false}>
             <Phone aria-hidden="true" size={16} />
             Call Now
