@@ -124,7 +124,7 @@ export default function ServiceAreasPage(){
               Request Service
             </Button>
             <div className="mt-4 text-xs text-white/60">
-              <Star className="fill-yellow-400 text-yellow-400" size={14} className="mr-1" />
+              <Star className="fill-yellow-400 text-yellow-400 mr-1" size={14} />
               {SITE.reviewCount}+ reviews across Lahore
             </div>
           </div>

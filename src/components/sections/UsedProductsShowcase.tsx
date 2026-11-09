@@ -3,7 +3,7 @@ import { ArrowRight, Camera, Phone, Tag } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/Button";
 import { ProductCard } from "@/components/market/ProductCard";
-import { CATEGORIES, LISTINGS } from "@/data/listings";
+import { CATEGORIES, LISTINGS, type Listing } from "@/data/listings";
 import { SITE } from "@/constants/site";
 import { ProductModal } from "@/components/market/ProductModal";
 import { useState, useCallback  } from "react";
