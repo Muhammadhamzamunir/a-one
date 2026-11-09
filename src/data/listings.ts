@@ -85,6 +85,7 @@ export const LISTINGS: Listing[] = [
     description: "Wall-mounted split unit. Cooling performance and remote checked before sale; installation can be arranged.",
     featured: true,
     price: "Price on call",
+    image: "/images/image.png",
   },
   {
     id: "fridge-double",
@@ -96,6 +97,7 @@ export const LISTINGS: Listing[] = [
     description: "Household refrigerator in working order. Ask the team for current capacity, age and delivery options.",
     featured: true,
     price: "Price on call",
+    image: "/images/double-door.png",
   },
   {
     id: "tv-led-43",
@@ -107,18 +109,19 @@ export const LISTINGS: Listing[] = [
     description: "Flat-panel television with remote and stand. Screen and ports tested on request.",
     featured: true,
     price: "Price on call",
+    image: "/images/led.png",
   },
-  {
-    id: "laptop-i5",
-    title: "Business Laptop",
-    category: "computers",
-    art: "laptop",
-    condition: "Good",
-    specs: ["Core i5", "8 GB RAM", "SSD"],
-    description: "Office-grade laptop with charger. Battery health and storage details shared on the call.",
-    featured: true,
-    price: "Price on call",
-  },
+  // {
+  //   id: "laptop-i5",
+  //   title: "Business Laptop",
+  //   category: "computers",
+  //   art: "laptop",
+  //   condition: "Good",
+  //   specs: ["Core i5", "8 GB RAM", "SSD"],
+  //   description: "Office-grade laptop with charger. Battery health and storage details shared on the call.",
+  //   featured: true,
+  //   price: "Price on call",
+  // },
   {
     id: "freezer-chest",
     title: "Deep Freezer",
@@ -128,6 +131,8 @@ export const LISTINGS: Listing[] = [
     specs: ["Chest type", "Single lid", "Commercial use"],
     description: "Chest freezer suitable for shops and kitchens. Compressor check available before purchase.",
     price: "Price on call",
+    featured: true,
+    image:"/images/deep-freezer.png"
   },
   {
     id: "washer-front",
