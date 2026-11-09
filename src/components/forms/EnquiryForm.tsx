@@ -53,7 +53,8 @@ export function EnquiryForm({
     }
   };
   const input =
-    "focus-ring mt-2 min-h-12 w-full rounded-md border border-slate-300 bg-white px-4 text-brand-navy placeholder:text-slate-400";
+    "focus-ring mt-2 min-h-12 leading-12 w-full rounded-md border border-slate-300 bg-white px-4 text-brand-navy placeholder:text-slate-400";
+  const selectClass = input + " appearance-none bg-white";
   if (isSuccess)
     return (
       <div
@@ -104,7 +105,7 @@ export function EnquiryForm({
           />
         </Field>
         <Field label="Service" error={errors.service?.message}>
-          <select className={input} {...register("service")}>
+          <select className={selectClass} {...register("service")}>
             <option value="">Select a service</option>
             {services.map((s) => (
               <option key={s.slug} value={s.slug}>
@@ -118,7 +119,7 @@ export function EnquiryForm({
       </div>
       <div className="grid gap-5 sm:grid-cols-3">
         <Field label="Property / industry">
-          <select className={input} {...register("propertyType")}>
+          <select className={selectClass} {...register("propertyType")}>
             <option value="">Select type</option>
             <option>Residential</option>
             <option>Office / IT</option>
@@ -132,7 +133,7 @@ export function EnquiryForm({
           <input className={input} type="date" {...register("preferredDate")} />
         </Field>
         <Field label="Preferred time">
-          <select className={input} {...register("preferredTime")}>
+          <select className={selectClass} {...register("preferredTime")}>
             <option value="">Any time</option>
             <option>Morning</option>
             <option>Afternoon</option>

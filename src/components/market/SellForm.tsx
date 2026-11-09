@@ -9,7 +9,8 @@ const CONDITIONS: Condition[] = ["Like new", "Good", "Fair", "For repair"];
 const MAX_PHOTOS = 4;
 
 const field =
-  "focus-ring mt-2 min-h-12 w-full rounded-lg border border-slate-300 bg-white px-4 text-[15px] text-brand-navy placeholder:text-slate-400";
+  "focus-ring mt-2 min-h-12 leading-12 w-full rounded-lg border border-slate-300 bg-white px-4 text-[15px] text-brand-navy placeholder:text-slate-400";
+const selectClass = field + " appearance-none bg-white";
 
 type Errors = Partial<Record<"name" | "phone" | "item" | "details", string>>;
 
@@ -118,7 +119,7 @@ export function SellForm() {
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="block text-sm font-bold text-brand-navy">
           Category
-          <select name="category" className={field} defaultValue="cooling">
+          <select name="category" className={selectClass} defaultValue="cooling">
             {CATEGORIES.map((c) => (
               <option key={c.id} value={c.id}>
                 {c.label}
@@ -128,7 +129,7 @@ export function SellForm() {
         </label>
         <label className="block text-sm font-bold text-brand-navy">
           Condition
-          <select name="condition" className={field} defaultValue="Good">
+          <select name="condition" className={selectClass} defaultValue="Good">
             {CONDITIONS.map((c) => (
               <option key={c}>{c}</option>
             ))}

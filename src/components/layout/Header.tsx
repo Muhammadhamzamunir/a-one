@@ -152,7 +152,7 @@ export function Header() {
                 >
                   {item.label}
                   {isItemActive(item.href) && (
-                    <span className="absolute left-0 top-0 bottom-0 w-[3px] rounded-full bg-brand-red" />
+                    <span className="hidden lg:gabsolute left-0 top-0 bottom-0 w-[3px] rounded-full bg-brand-red" />
                   )}
                 </Link>
               ))}
