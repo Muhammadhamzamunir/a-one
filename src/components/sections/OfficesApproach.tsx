@@ -167,7 +167,7 @@ function PlanChoices() {
   return (
     <div ref={ref} className="relative">
       <motion.div
-        className="rounded-3xl border border-white/12 bg-white/[0.06] p-5 shadow-[0_24px_60px_rgba(0,0,0,0.3)] backdrop-blur-md sm:p-7"
+        className="lg:rounded-3xl lg:border lg:border-white/12 lg:bg-white/[0.06] lg:p-5 shadow-[0_24px_60px_rgba(0,0,0,0.3)] backdrop-blur-md sm:p-7"
         animate={reduceMotion ? undefined : { y: [0, -8, 0] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
       >
