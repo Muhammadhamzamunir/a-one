@@ -101,7 +101,7 @@ export default function HomePage() {
   </div>
 
   {/* ---------- Content ---------- */}
-  <div className="container-shell relative z-10  lg:min-h-[90vh]  flex flex-col items-center justify-center lg:items-start text-center lg:text-left">
+  <div className="container-shell relative z-10  lg:min-h-[80vh]  flex flex-col items-center justify-center lg:items-start text-center lg:text-left">
     <div className="max-w-2xl mt-20 lg:mt-0">
       <h1 className="text-3xl font-extrabold leading-[1.1] tracking-tight sm:text-4xl lg:text-5xl">
         Need an Electrician?
